@@ -8,7 +8,7 @@ public interface Ilayout {
     /**
      * @return the children of the receiver.
      */
-    List<Ilayout> children();
+    List<Ilayout> children(Ilayout goal);
 
 
     /**
@@ -21,6 +21,5 @@ public interface Ilayout {
      * @return the cost for moving from the input config to the receiver.
      */
     int getG();
-
 
 }

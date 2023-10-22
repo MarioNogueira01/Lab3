@@ -9,11 +9,9 @@ public class Main {
             Scanner sc = new Scanner(System.in);
             BestFirst s = new BestFirst();
             int number = sc.nextInt();
-            Iterator<BestFirst.State> it = s.solve(new sequence(number, 0),
+            Iterator<BestFirst.State> it = s.solve(new sequence(number, Math.abs(number - number*3)),
                     new sequence(number * 3, 0));
            try {
-
-
                if (it == null) System.out.println("no solution found");
                else {
                    while (it.hasNext()) {

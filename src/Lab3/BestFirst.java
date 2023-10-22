@@ -3,33 +3,30 @@ package Lab3;
 import java.util.*;
 
 public class BestFirst {
-    protected Queue<State> abertos;
-    private Map<Ilayout, State> fechados;
     private State actual;
     private Ilayout objective;
 
     public static class State {
         private Ilayout layout;
         private State father;
-        private double g;
-
-        private int prof = -1;
-
+        private int g;
+        private int h;
 
         /**
-         * Construtor for State class
+         * Constructor for State class
          */
         public State(Ilayout l, State n) {
             layout = l;
             father = n;
-            prof ++;
-            if (father != null)
-                g = father.g + l.getG();
-            else g = 0;
+            if (father != null) {
+                g = l.getG() + father.g; // Corrected the calculation of 'g'
+            } else {
+                g = l.getG();
+            }
         }
 
         /**
-         * Returns a string representation of the state..
+         * Returns a string representation of the state.
          */
         public String toString() {
             return layout.toString();
@@ -38,10 +35,13 @@ public class BestFirst {
         /**
          * Returns the cost associated with the state.
          */
-        public double getG() {
+        public int getG() {
             return g;
         }
 
+        public int getH() {
+            return h;
+        }
 
         /**
          * Calculates the hash code for the state.
@@ -64,9 +64,9 @@ public class BestFirst {
     /**
      * Generates a list of successor states for a given state.
      */
-    final private List<State> sucessores(State n) {
+    final private List<State> sucessores(State n, Ilayout goal) {
         List<State> sucs = new ArrayList<>();
-        List<Ilayout> children = n.layout.children();
+        List<Ilayout> children = n.layout.children(goal);
         for (Ilayout e : children) {
             if (n.father == null || !e.equals(n.father.layout)) {
                 State nn = new State(e, n);
@@ -76,50 +76,60 @@ public class BestFirst {
         return sucs;
     }
 
-    public static int heuristic(Ilayout s, Ilayout goal){
-        return Math.abs(s.getNum() - goal.getNum());
-    }
-
-
     /**
      * Solves a problem using the IDA* algorithm.
      */
+
     final public Iterator<State> solve(Ilayout s, Ilayout goal) {
 
+        Stack<State> path = new Stack<State>();
+        this.actual = new State(s, null);
+
+        int g = 0;
         objective = goal;
-        abertos = new PriorityQueue<>(10,
-                (s1, s2) -> (int) Math.signum(s1.getG() - s2.getG()));
-        fechados = new HashMap<>();
-        abertos.add(new State(s, null));
-        int cut = 0;
-        List<State> sucs;
 
-        while (!abertos.isEmpty()) {
-            this.actual = abertos.poll();
-            if(abertos.isEmpty()){
+        int bound = actual.getG() - objective.getG();
+        path.add(actual);
 
+        while (true) {
+            int t = IDASearch(path, g, bound);
+            if (t == 0) {
+                return path.iterator();
             }
-
-            if (this.actual.layout.isGoal(objective)) {// layout.equals(objective)) { //  verificar: usar isgoal()->Board
-                List<State> result = new ArrayList<>();
-                result.add(this.actual);
-                while (this.actual != null) {
-                    result.add(0, this.actual.father);
-                    this.actual = this.actual.father;
-                }
-                result.remove(result.remove(0));
-                return result.listIterator();
-            } else {
-                if(actual.prof <= )
-                sucs = this.sucessores(actual);
-                fechados.put(actual.layout, actual);
-                for (State item : sucs) {
-                    if (!fechados.containsKey(item.layout)) {
-                        abertos.add(item);
-                    }
-                }
+            if (t == Integer.MAX_VALUE) {
+                return null;
             }
         }
-        return null;
+    }
+
+    private int IDASearch(Stack<State> path, int g, int bound) {
+        State last = path.lastElement();
+
+        int f = g + last.getH(); // Changed 'last.h' to 'last.getH()'
+
+        if (f > bound)
+            return f;
+        if (last.layout.isGoal(objective))
+            return 0;
+        int min = Integer.MAX_VALUE;
+        List<State> successors = sucessores(last, objective); // Corrected the method name
+        for (State a : successors) {
+            if (!path.contains(a)) {
+                path.push(a);
+                int t = IDASearch(path, cost(last, a), bound);
+                if (t == 0) {
+                    return 0;
+                }
+                if (t < min) {
+                    min = t;
+                }
+                path.pop();
+            }
+        }
+        return min;
+    }
+
+    private int cost(State last, State a) {
+        return last.getG() + a.getG();
     }
 }
