@@ -14,6 +14,8 @@ public class BestFirst {
 
         /**
          * Constructor for State class
+         * l nó que estou
+         * n nó pai
          */
         public State(Ilayout l, State n) {
             layout = l;
@@ -21,7 +23,7 @@ public class BestFirst {
             if (father != null) {
                 g = l.getG() + father.g; // Corrected the calculation of 'g'
             } else {
-                g = l.getG();
+                g = 0;
             }
         }
 
@@ -85,14 +87,14 @@ public class BestFirst {
         Stack<State> path = new Stack<State>();
         this.actual = new State(s, null);
 
-        int g = 0;
+
         objective = goal;
 
         int bound = actual.getG() - objective.getG();
         path.add(actual);
 
         while (true) {
-            int t = IDASearch(path, g, bound);
+            int t = IDASearch(path, this.actual.getG(), bound);
             if (t == 0) {
                 return path.iterator();
             }

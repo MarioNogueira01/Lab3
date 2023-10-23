@@ -9,9 +9,12 @@ public class sequence implements Ilayout {
     private int num;
     private int g;
 
-    public sequence(int number, int g) {
+    private int h;
+
+    public sequence(int number, int g, int h) {
         num = number;
         this.g = g;
+        this.h = h;
     }
 
     @Override
@@ -30,15 +33,15 @@ public class sequence implements Ilayout {
 
         int goalNum = goal.getNum();
 
-        resultChildren.add(new sequence(num + 1, heuristic(1, num + 1, goalNum)));
-        resultChildren.add(new sequence(num - 1, heuristic(2, num - 1, goalNum)));
-        resultChildren.add(new sequence(num * 2, heuristic(3, num * 2, goalNum)));
+        resultChildren.add(new sequence(num + 1, 1, heuristic(num + 1,goalNum)));
+        resultChildren.add(new sequence(num - 1, 2, heuristic(num - 1,goalNum)));
+        resultChildren.add(new sequence(num * 2, 3, heuristic(num * 2,goalNum)));
 
         return resultChildren;
     }
 
-    private int heuristic(int g, int i, int goalNum) {
-        return g + Math.abs(goalNum - i);
+    private int heuristic(int i, int goalNum) {
+        return Math.abs(goalNum - i);
     }
 
     @Override
