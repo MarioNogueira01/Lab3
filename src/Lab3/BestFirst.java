@@ -10,6 +10,7 @@ public class BestFirst {
         private Ilayout layout;
         private State father;
         private int g;
+
         private int h;
 
         /**
@@ -21,9 +22,11 @@ public class BestFirst {
             layout = l;
             father = n;
             if (father != null) {
-                g = l.getG() + father.g; // Corrected the calculation of 'g'
+                g = l.getG() + father.g;// Corrected the calculation of 'g'
+                h = l.getH();
             } else {
                 g = 0;
+                h = l.getH();
             }
         }
 
@@ -41,9 +44,7 @@ public class BestFirst {
             return g;
         }
 
-        public int getH() {
-            return h;
-        }
+        public int getH(){return h;}
 
         /**
          * Calculates the hash code for the state.
@@ -61,7 +62,8 @@ public class BestFirst {
             State n = (State) o;
             return this.layout.equals(n.layout);
         }
-    }
+
+        }
 
     /**
      * Generates a list of successor states for a given state.
@@ -90,7 +92,7 @@ public class BestFirst {
 
         objective = goal;
 
-        int bound = actual.getG() - objective.getG();
+        int bound = actual.getH();
         path.add(actual);
 
         while (true) {
@@ -101,6 +103,7 @@ public class BestFirst {
             if (t == Integer.MAX_VALUE) {
                 return null;
             }
+            bound = t;
         }
     }
 
@@ -114,7 +117,7 @@ public class BestFirst {
         if (last.layout.isGoal(objective))
             return 0;
         int min = Integer.MAX_VALUE;
-        List<State> successors = sucessores(last, objective); // Corrected the method name
+        List<State> successors = sucessores(last, objective);
         for (State a : successors) {
             if (!path.contains(a)) {
                 path.push(a);
@@ -122,9 +125,8 @@ public class BestFirst {
                 if (t == 0) {
                     return 0;
                 }
-                if (t < min) {
+                if (t < min)
                     min = t;
-                }
                 path.pop();
             }
         }

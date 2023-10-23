@@ -17,6 +17,8 @@ public interface Ilayout {
      */
     boolean isGoal(Ilayout l);
 
+    int getH();
+
     /**
      * @return the cost for moving from the input config to the receiver.
      */

@@ -63,6 +63,11 @@ public class sequence implements Ilayout {
     }
 
     @Override
+    public int getH() {
+        return h;
+    }
+
+    @Override
     public int getG() {
         return g;
     }
