@@ -6,6 +6,10 @@ public class BestFirst {
     private State actual;
     private Ilayout objective;
 
+    public int count = 0;//nós abertos
+    public int fech = 0;//nós fechados
+    public int exp = 0;//nós expandidos
+
     public static class State {
         private Ilayout layout;
         private State father;
@@ -118,6 +122,8 @@ public class BestFirst {
             return 0;
         int min = Integer.MAX_VALUE;
         List<State> successors = sucessores(last, objective);
+        exp ++;
+        count += successors.size();
         for (State a : successors) {
             if (!path.contains(a)) {
                 path.push(a);
@@ -128,6 +134,7 @@ public class BestFirst {
                 if (t < min)
                     min = t;
                 path.pop();
+                fech += 1;
             }
         }
         return min;
@@ -136,4 +143,5 @@ public class BestFirst {
     private int cost(State last, State a) {
         return last.getG() + a.getG();
     }
+    //TODO: ver como posso ver os nos abertos,fechados e expandidos
 }

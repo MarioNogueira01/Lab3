@@ -19,7 +19,11 @@ public class Main {
                        System.out.println(i);
                        if (!it.hasNext())
                            System.out.println("\n" + (int) i.getG());
+
                    }
+                   System.out.println("nos expandidos = " + s.exp);
+                   System.out.println("nos fechados = " + s.fech);
+                   System.out.println("nos abertos = " + s.count);
                }
            }catch (Exception e) {
                throw new RuntimeException();
