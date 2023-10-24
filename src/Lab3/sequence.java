@@ -43,7 +43,7 @@ public class sequence implements Ilayout {
     private int heuristic(int i, int goalNum) {
         return Math.abs(goalNum - i);
     }
-    //TODO: acabar a heuristica
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
