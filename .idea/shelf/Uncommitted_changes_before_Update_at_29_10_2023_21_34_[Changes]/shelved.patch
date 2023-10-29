@@ -1,0 +1,159 @@
+Index: src/Lab3/sequence.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Lab3;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.Objects;\r\n\r\npublic class sequence implements Ilayout {\r\n\r\n    private int num;\r\n    private int g;\r\n\r\n    private int h;\r\n\r\n    public sequence(int number, int g, int h) {\r\n        num = number;\r\n        this.g = g;\r\n        this.h = h;\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return String.valueOf(num);\r\n    }\r\n\r\n    @Override\r\n    public int getNum() {\r\n        return num;\r\n    }\r\n\r\n    @Override\r\n    public List<Ilayout> children(Ilayout goal) {\r\n        List<Ilayout> resultChildren = new ArrayList<>();\r\n\r\n        int goalNum = goal.getNum();\r\n\r\n        resultChildren.add(new sequence(num + 1, 1, heuristic(num + 1,goalNum)));\r\n        resultChildren.add(new sequence(num - 1, 2, heuristic(num - 1,goalNum)));\r\n        resultChildren.add(new sequence(num * 2, 3, heuristic(num * 2,goalNum)));\r\n\r\n        return resultChildren;\r\n    }\r\n\r\n    private int heuristic(int i, int goalNum) {\r\n        return Math.abs(goalNum - i);\r\n    }\r\n    //TODO: acabar a heuristica\r\n    @Override\r\n    public boolean equals(Object o) {\r\n        if (this == o) return true;\r\n        if (o == null || getClass() != o.getClass()) return false;\r\n        sequence otherSequence = (sequence) o;\r\n        return num == otherSequence.num;\r\n    }\r\n\r\n    @Override\r\n    public int hashCode() {\r\n        return Objects.hash(num);\r\n    }\r\n\r\n    @Override\r\n    public boolean isGoal(Ilayout l) {\r\n        return this.equals(l);\r\n    }\r\n\r\n    @Override\r\n    public int getH() {\r\n        return h;\r\n    }\r\n\r\n    @Override\r\n    public int getG() {\r\n        return g;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Lab3/sequence.java b/src/Lab3/sequence.java
+--- a/src/Lab3/sequence.java	(revision 0f2d70187d436800c5b8cf09a6d554389cd08804)
++++ b/src/Lab3/sequence.java	(date 1698244157769)
+@@ -40,8 +40,8 @@
+         return resultChildren;
+     }
+ 
+-    private int heuristic(int i, int goalNum) {
+-        return Math.abs(goalNum - i);
++    private int heuristic(int actual, int goalNum) {
++        return Math.abs(goalNum - actual);
+     }
+     //TODO: acabar a heuristica
+     @Override
+Index: src/Lab3/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Lab3;\r\n\r\n\r\nimport java.util.*;\r\n\r\npublic class Main {\r\n\r\n    public static void main(String[] args) throws Exception {\r\n            Scanner sc = new Scanner(System.in);\r\n            BestFirst s = new BestFirst();\r\n            int number = sc.nextInt();\r\n            Iterator<BestFirst.State> it = s.solve(new sequence(number,0 , Math.abs(number - number*3)),\r\n                    new sequence(number * 3, 0,0));\r\n           try {\r\n               if (it == null) System.out.println(\"no solution found\");\r\n               else {\r\n                   while (it.hasNext()) {\r\n                       BestFirst.State i = it.next();\r\n                       System.out.println(i);\r\n                       if (!it.hasNext())\r\n                           System.out.println(\"\\n\" + (int) i.getG());\r\n\r\n                   }\r\n                   System.out.println(\"nos expandidos = \" + s.exp);\r\n                   System.out.println(\"nos fechados = \" + s.fech);\r\n                   System.out.println(\"nos abertos = \" + s.count);\r\n               }\r\n           }catch (Exception e) {\r\n               throw new RuntimeException();\r\n           }\r\n            sc.close();\r\n        }\r\n\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Lab3/Main.java b/src/Lab3/Main.java
+--- a/src/Lab3/Main.java	(revision 0f2d70187d436800c5b8cf09a6d554389cd08804)
++++ b/src/Lab3/Main.java	(date 1698244595783)
+@@ -18,12 +18,12 @@
+                        BestFirst.State i = it.next();
+                        System.out.println(i);
+                        if (!it.hasNext())
+-                           System.out.println("\n" + (int) i.getG());
++                           System.out.println("\n" + i.getG());
+ 
+                    }
+-                   System.out.println("nos expandidos = " + s.exp);
++                   /*System.out.println("nos expandidos = " + s.exp);
+                    System.out.println("nos fechados = " + s.fech);
+-                   System.out.println("nos abertos = " + s.count);
++                   System.out.println("nos abertos = " + s.count);*/
+                }
+            }catch (Exception e) {
+                throw new RuntimeException();
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c94ecd95-9d4b-4972-a309-555b541bd5da\" name=\"Changes\" comment=\"Codigo Final(Podendo ser modificado a Heuristica)\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Lab3/BestFirst.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Lab3/BestFirst.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Lab3/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Lab3/Main.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"4a527e54-ba35-4df8-bb9c-90947427c9bb\" />\r\n        <option name=\"url\" value=\"https://github.com/MarioNogueira01/Lab3.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2WvvK5NkrMJGrlmiJfyAoWN0jpQ\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"last_opened_file_path\": \"C:/Users/mnogu/OneDrive/Ambiente de Trabalho/Uni/3 ano/1 Semestre/IA/Lab3\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"c94ecd95-9d4b-4972-a309-555b541bd5da\" name=\"Changes\" comment=\"\" />\r\n      <created>1697625809314</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1697625809314</updated>\r\n      <workItem from=\"1697625810357\" duration=\"1946000\" />\r\n      <workItem from=\"1697723531112\" duration=\"1834000\" />\r\n      <workItem from=\"1697964287757\" duration=\"15517000\" />\r\n      <workItem from=\"1698086968377\" duration=\"2673000\" />\r\n      <workItem from=\"1698101953304\" duration=\"666000\" />\r\n      <workItem from=\"1698102739011\" duration=\"349000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"criação da heuristica\">\r\n      <created>1697627767981</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1697627767981</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"começo de criação do algoritmo\">\r\n      <created>1697725368490</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1697725368490</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"começo de criação do algoritmoII\">\r\n      <created>1698077180764</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1698077180764</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"começo de criação do algoritmoII\">\r\n      <created>1698086987280</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1698086987280</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Codigo Final(Podendo ser modificado a Heuristica)\">\r\n      <created>1698102599692</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1698102599692</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"criação da heuristica\" />\r\n    <MESSAGE value=\"começo de criação do algoritmo\" />\r\n    <MESSAGE value=\"começo de criação do algoritmoII\" />\r\n    <MESSAGE value=\"Codigo Final(Podendo ser modificado a Heuristica)\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Codigo Final(Podendo ser modificado a Heuristica)\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Lab3/BestFirst.java</url>\r\n          <line>114</line>\r\n          <properties class=\"Lab3.BestFirst\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/Lab3/BestFirst.java</url>\r\n          <line>122</line>\r\n          <option name=\"timeStamp\" value=\"7\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/Lab3/BestFirst.java</url>\r\n          <line>126</line>\r\n          <option name=\"timeStamp\" value=\"9\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/Lab3/BestFirst.java</url>\r\n          <line>127</line>\r\n          <option name=\"timeStamp\" value=\"10\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/Lab3/BestFirst.java</url>\r\n          <line>128</line>\r\n          <option name=\"timeStamp\" value=\"11\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 0f2d70187d436800c5b8cf09a6d554389cd08804)
++++ b/.idea/workspace.xml	(date 1698615284184)
+@@ -4,10 +4,10 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="c94ecd95-9d4b-4972-a309-555b541bd5da" name="Changes" comment="Codigo Final(Podendo ser modificado a Heuristica)">
++    <list default="true" id="c94ecd95-9d4b-4972-a309-555b541bd5da" name="Changes" comment="Codigo Final; temos de mudar a função da heuristica">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Lab3/BestFirst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab3/BestFirst.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Lab3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab3/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Lab3/sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab3/sequence.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -49,23 +49,23 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ASKED_ADD_EXTERNAL_FILES": "true",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "last_opened_file_path": "C:/Users/mnogu/OneDrive/Ambiente de Trabalho/Uni/3 ano/1 Semestre/IA/Lab3",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.0",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/mnogu/OneDrive/Ambiente de Trabalho/Uni/3 ano/1 Semestre/IA/Lab3&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -79,7 +79,13 @@
+       <workItem from="1697964287757" duration="15517000" />
+       <workItem from="1698086968377" duration="2673000" />
+       <workItem from="1698101953304" duration="666000" />
+-      <workItem from="1698102739011" duration="349000" />
++      <workItem from="1698102739011" duration="786000" />
++      <workItem from="1698103683274" duration="633000" />
++      <workItem from="1698143606912" duration="411000" />
++      <workItem from="1698153387589" duration="897000" />
++      <workItem from="1698177916773" duration="594000" />
++      <workItem from="1698244046506" duration="823000" />
++      <workItem from="1698614857477" duration="416000" />
+     </task>
+     <task id="LOCAL-00001" summary="criação da heuristica">
+       <created>1697627767981</created>
+@@ -116,7 +122,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1698102599692</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="Codigo Final(Podendo ser modificado a Heuristica), tentativa de ver quantos nós foram abertos,fechados e expandidos">
++      <created>1698103412795</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1698103412795</updated>
++    </task>
++    <task id="LOCAL-00007" summary="Codigo Final; temos de mudar a função da heuristica">
++      <created>1698179016472</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1698179016472</updated>
++    </task>
++    <option name="localTasksCounter" value="8" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -139,7 +159,9 @@
+     <MESSAGE value="começo de criação do algoritmo" />
+     <MESSAGE value="começo de criação do algoritmoII" />
+     <MESSAGE value="Codigo Final(Podendo ser modificado a Heuristica)" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Codigo Final(Podendo ser modificado a Heuristica)" />
++    <MESSAGE value="Codigo Final(Podendo ser modificado a Heuristica), tentativa de ver quantos nós foram abertos,fechados e expandidos" />
++    <MESSAGE value="Codigo Final; temos de mudar a função da heuristica" />
++    <option name="LAST_COMMIT_MESSAGE" value="Codigo Final; temos de mudar a função da heuristica" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
