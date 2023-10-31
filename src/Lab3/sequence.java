@@ -40,22 +40,28 @@ public class sequence implements Ilayout {
         return resultChildren;
     }
 
+    private static double Log2(double N)
+    {
+        // Calcula o logaritmo na base 2
+        double result = Math.log(N) / Math.log(2);
+        return result;
+    }
+
     private int heuristic(int i, int goalNum) {
-        TripleA g = (TripleA) goal;
-        int num = this.num;
-        if(num == 0) return Integer.MAX_VALUE; // temp
+
+        if(i == 0) return Integer.MAX_VALUE; // temp
         int result = 0;
 
         double exp = 0;
-        if(num < 0){
-            exp = Math.round(TripleA.log2((double)goalNum/(num-0.5)));
+        if(i < 0){
+            exp = Math.round(Log2(goalNum/(i-0.5)));
         }
         else{
-            exp = Math.round(TripleA.log2((double)goalNum/(num+0.5)));
+            exp = Math.round(Log2(goalNum/(i+0.5)));
         }
         if(exp <= 0){
-            double dist = goalNum - num;
-            if (num < 0){
+            double dist = goalNum - i;
+            if (i < 0){
                 result = (int) (Math.abs(dist)*2);
             }
             else{
@@ -63,8 +69,8 @@ public class sequence implements Ilayout {
             }
         }
         else{
-            double y = (goalNum/Math.pow(2,exp) - num);
-            double y_2 = (goalNum/Math.pow(2,exp-1) - num);
+            double y = (goalNum/Math.pow(2,exp) - i);
+            double y_2 = (goalNum/Math.pow(2,exp-1) - i);
 
             y = y < 0 ? Math.abs(y *2) : Math.abs(y);
             y_2 = y_2 < 0 ? Math.abs(y_2 *2) : Math.abs(y_2);
