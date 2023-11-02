@@ -1,0 +1,29 @@
+Index: .idea/shelf/Changes3/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Changes3/shelved.patch b/.idea/shelf/Changes3/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1698764325211)
++++ b/.idea/shelf/Changes3/shelved.patch	(date 1698764325211)
+@@ -0,0 +1,15 @@
++Index: .idea/shelf/Changes1.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/shelf/Changes1.xml b/.idea/shelf/Changes1.xml
++new file mode 100644
++--- /dev/null	(date 1698764289742)
+++++ b/.idea/shelf/Changes1.xml	(date 1698764289742)
++@@ -0,0 +1,4 @@
+++<changelist name="Changes1" date="1698764278324" recycled="false">
+++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Changes1/shelved.patch" />
+++  <option name="DESCRIPTION" value="Changes" />
+++</changelist>
++\ No newline at end of file
+diff --git a/.idea/shelf/Changes1/shelved.patch b/.idea/shelf/Changes1/shelved.patch
+new file mode 100644
+diff --git a/.idea/shelf/Changes2/shelved.patch b/.idea/shelf/Changes2/shelved.patch
+new file mode 100644

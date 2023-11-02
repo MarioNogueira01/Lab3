@@ -3,6 +3,10 @@ package Lab3;
 import java.util.*;
 
 public class BestFirst {
+
+    protected Queue<State> abertos = new PriorityQueue<>(10, (s1, s2) -> (int) Math.signum(s1.getF() - s2.getF()));
+
+    private Map<Ilayout, State> fechados = new HashMap<>();;
     private State actual;
     private Ilayout objective;
 
@@ -67,7 +71,10 @@ public class BestFirst {
             return this.layout.equals(n.layout);
         }
 
+        public double getF() {
+            return this.getG() + this.getH();
         }
+    }
 
     /**
      * Generates a list of successor states for a given state.
@@ -93,6 +100,7 @@ public class BestFirst {
         Stack<State> path = new Stack<State>();
         this.actual = new State(s, null);
 
+        abertos.add(actual);
 
         objective = goal;
 
@@ -112,36 +120,43 @@ public class BestFirst {
     }
 
     private int IDASearch(Stack<State> path, int g, int bound) {
-        State last = path.lastElement();
 
-        int f = g + last.getH(); // Changed 'last.h' to 'last.getH()'
+        List<State> sucs;
 
-        if (f > bound)
-            return f;
-        if (last.layout.isGoal(objective))
-            return 0;
-        int min = Integer.MAX_VALUE;
-        List<State> successors = sucessores(last, objective);
-        exp ++;
-        count += successors.size();
-        for (State a : successors) {
-            if (!path.contains(a)) {
-                path.push(a);
-                int t = IDASearch(path, cost(last, a), bound);
-                if (t == 0) {
-                    return 0;
-                }
-                if (t < min)
-                    min = t;
-                path.pop();
-                fech += 1;
+            State current = abertos.poll();
+
+            int f = g + current.getH(); // Changed 'last.h' to 'last.getH()'
+
+            if (f > bound){
+                return f;
             }
-        }
-        return min;
+            if (current.layout.isGoal(objective))
+                return 0;
+            int min = Integer.MAX_VALUE;
+
+            sucs = this.sucessores(current, objective);
+
+            exp++;
+            count += sucs.size();
+            for (State a : sucs) {
+                if (!path.contains(a)) {
+                    path.push(a);
+                    abertos.add(a);
+                    int t = IDASearch(path, cost(current, a), bound);
+                    if (t == 0) {
+                        return 0;
+                    }
+                    if (t < min)
+                        min = t;
+                    path.pop();
+                    fechados.put(a.layout,a);
+                    fech += 1;
+                }
+            }
+            return min;
     }
 
     private int cost(State last, State a) {
         return last.getG() + a.getG();
     }
-    //TODO: ver como posso ver os nos abertos,fechados e expandidos
 }

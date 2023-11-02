@@ -79,7 +79,6 @@ public class sequence implements Ilayout {
         }
         return result;
     }
-    //TODO: acabar a heuristica
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
