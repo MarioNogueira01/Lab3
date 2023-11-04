@@ -4,13 +4,11 @@ import java.util.*;
 
 public class BestFirst {
 
-    protected Queue<State> abertos = new PriorityQueue<>(10, (s1, s2) -> (int) Math.signum(s1.getF() - s2.getF()));
-
-    private Map<Ilayout, State> fechados = new HashMap<>();;
+    Stack<State> path = new Stack<State>();
     private State actual;
     private Ilayout objective;
 
-    public int count = 0;//nós abertos
+    public int gera = 0;//nós abertos
     public int fech = 0;//nós fechados
     public int exp = 0;//nós expandidos
 
@@ -97,66 +95,56 @@ public class BestFirst {
 
     final public Iterator<State> solve(Ilayout s, Ilayout goal) {
 
-        Stack<State> path = new Stack<State>();
-        this.actual = new State(s, null);
+        State root = new State(s, null);
 
-        abertos.add(actual);
+        this.actual = root;
 
         objective = goal;
 
-        int bound = actual.getH();
+        double bound = actual.getF();
+
         path.add(actual);
 
-        while (true) {
-            int t = IDASearch(path, this.actual.getG(), bound);
-            if (t == 0) {
-                return path.iterator();
-            }
-            if (t == Integer.MAX_VALUE) {
-                return null;
-            }
-            bound = t;
-        }
-    }
 
-    private int IDASearch(Stack<State> path, int g, int bound) {
-
+        double min = Double.MAX_VALUE;
         List<State> sucs;
 
-            State current = abertos.poll();
-
-            int f = g + current.getH(); // Changed 'last.h' to 'last.getH()'
-
-            if (f > bound){
-                return f;
+        while (true) {
+            if (path.isEmpty()){
+                path.add(root);
             }
-            if (current.layout.isGoal(objective))
-                return 0;
-            int min = Integer.MAX_VALUE;
+            min = Double.MAX_VALUE;
+            while(!path.isEmpty()) {
+                State current = path.pop();
+                fech++;//nos fechados
 
-            sucs = this.sucessores(current, objective);
+                double F = current.getF();
 
-            exp++;
-            count += sucs.size();
-            for (State a : sucs) {
-                if (!path.contains(a)) {
-                    path.push(a);
-                    abertos.add(a);
-                    int t = IDASearch(path, cost(current, a), bound);
-                    if (t == 0) {
-                        return 0;
+                if (F > bound && F < min) {
+                    min = F;
+                }
+                if (current.layout.isGoal(objective)){
+                    List<State> result = new ArrayList<>();
+                    result.add(current);
+                    while (current != null) {
+                        result.add(0, current.father);
+                        current = current.father;
                     }
-                    if (t < min)
-                        min = t;
-                    path.pop();
-                    fechados.put(a.layout,a);
-                    fech += 1;
+                    result.remove(result.remove(0));
+                    return result.listIterator();
+                } else if (F <= bound) {
+                    sucs = this.sucessores(current, objective);
+                    exp++;
+                    gera += sucs.size();
+                    for (State a : sucs) {
+                        if (!path.contains(a)) {
+                            path.add(a);
+                            //nos expandidos
+                        }
+                    }
                 }
             }
-            return min;
-    }
-
-    private int cost(State last, State a) {
-        return last.getG() + a.getG();
+            bound = min;
+        }
     }
 }

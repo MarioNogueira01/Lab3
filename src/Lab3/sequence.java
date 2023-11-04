@@ -40,7 +40,7 @@ public class sequence implements Ilayout {
         return resultChildren;
     }
 
-    private static double Log2(double N)
+    static double Log2(double N)
     {
         // Calcula o logaritmo na base 2
         double result = Math.log(N) / Math.log(2);

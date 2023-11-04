@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eeda2844-0290-4abe-a6be-a95a1acad00a" name="Changes" comment="Codigo Final(Podendo ser modificado a Heuristica)">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_10_2023_21_22_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_10_2023_21_22__Changes_.xml" beforeDir="false" />
+    <list default="true" id="c94ecd95-9d4b-4972-a309-555b541bd5da" name="Changes" comment="criação do algoritmo com erros">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_10_2023_21_34__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_10_2023_21_34__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lab3/BestFirst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab3/BestFirst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab3/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab3/sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab3/sequence.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +26,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -71,7 +72,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="eeda2844-0290-4abe-a6be-a95a1acad00a" name="Changes" comment="Codigo Final(Podendo ser modificado a Heuristica)" />
+      <changelist id="c94ecd95-9d4b-4972-a309-555b541bd5da" name="Changes" comment="criação do algoritmo com erros" />
       <created>1697625809314</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -84,6 +85,7 @@
       <workItem from="1698102739011" duration="349000" />
       <workItem from="1698764436337" duration="115000" />
       <workItem from="1698916456134" duration="3712000" />
+      <workItem from="1699131298374" duration="3817000" />
     </task>
     <task id="LOCAL-00001" summary="criação da heuristica">
       <created>1697627767981</created>
@@ -155,29 +157,10 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Lab3/BestFirst.java</url>
-          <line>125</line>
-          <properties class="Lab3.BestFirst">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Lab3/BestFirst.java</url>
-          <line>134</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Lab3/BestFirst.java</url>
-          <line>140</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Lab3/BestFirst.java</url>
-          <line>141</line>
-          <option name="timeStamp" value="10" />
+          <line>126</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
