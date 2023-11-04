@@ -127,6 +127,7 @@ public class BestFirst {
                     List<State> result = new ArrayList<>();
                     result.add(current);
                     while (current != null) {
+                        //prof++; profundidade da arvore
                         result.add(0, current.father);
                         current = current.father;
                     }
