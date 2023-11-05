@@ -1,7 +1,6 @@
 package Lab3;
 
 
-import java.sql.SQLOutput;
 import java.util.*;
 
 import static Lab3.sequence.Log2;
@@ -12,12 +11,8 @@ public class Main {
             Scanner sc = new Scanner(System.in);
             BestFirst s = new BestFirst();
             int number = sc.nextInt();
-        long startTimeMillis = System.currentTimeMillis();//temporizador
             Iterator<BestFirst.State> it = s.solve(new sequence(number,0 , heuristic(number, number*3)),
                     new sequence(number * 3, 0,0));
-        long endTimeMillis = System.currentTimeMillis();//temporizador
-        long executionTimeMillis = endTimeMillis - startTimeMillis;//temporizador
-        long executionTimeSecs = executionTimeMillis/1000;//temporizador
            try {
                if (it == null) System.out.println("no solution found");
                else {
@@ -28,16 +23,9 @@ public class Main {
                            System.out.println("\n" + i.getG());
 
                    }
-
-
                    System.out.println("nos expandidos = " + s.exp);
-                   System.out.println("nos gerados = " + s.gera);
                    System.out.println("nos fechados = " + s.fech);
-
-                   System.out.println("Profundidade: "+ s.prof);
-
-                   System.out.println("tempo de execucao : " + executionTimeSecs + " segundos e " + executionTimeMillis+" milisegundos");
-
+                   System.out.println("nos abertos = " + s.gera);
                }
            }catch (Exception e) {
                throw new RuntimeException();

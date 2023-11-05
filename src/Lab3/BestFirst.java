@@ -12,8 +12,6 @@ public class BestFirst {
     public int fech = 0;//nós fechados
     public int exp = 0;//nós expandidos
 
-    public int prof = 0;//profundidade da arvore
-
     public static class State {
         private Ilayout layout;
         private State father;
@@ -129,7 +127,7 @@ public class BestFirst {
                     List<State> result = new ArrayList<>();
                     result.add(current);
                     while (current != null) {
-                        prof++;// profundidade da arvore
+                        //prof++; profundidade da arvore
                         result.add(0, current.father);
                         current = current.father;
                     }
@@ -138,10 +136,9 @@ public class BestFirst {
                 } else if (F <= bound) {
                     sucs = this.sucessores(current, objective);
                     exp++;
+                    gera += sucs.size();
                     for (State a : sucs) {
-
                         if (!path.contains(a)) {
-                            gera++;
                             path.add(a);
                             //nos expandidos
                         }
