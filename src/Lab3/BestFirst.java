@@ -140,7 +140,7 @@ public class BestFirst {
                     exp++;
                     for (State a : sucs) {
                         if (!path.contains(a)) {
-                            gera += sucs.size();
+                            gera ++;
                             path.add(a);
                             //nos expandidos
                         }
