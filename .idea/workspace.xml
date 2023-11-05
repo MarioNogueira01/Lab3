@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c94ecd95-9d4b-4972-a309-555b541bd5da" name="Changes" comment="codigo final" />
+    <list default="true" id="c94ecd95-9d4b-4972-a309-555b541bd5da" name="Changes" comment="codigo final">
+      <change afterPath="$PROJECT_DIR$/src/Lab3/Lab3/BestFirst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab3/Lab3/Ilayout.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab3/Lab3/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab3/Lab3/sequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_10_2023_09_20_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_10_2023_09_20__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab3/BestFirst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab3/BestFirst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab3/Main.java" afterDir="false" />
+    </list>
+    <list id="247f7240-1dc1-4541-8206-f6fd7fb2e32d" name="Changes by omgbe" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,7 +65,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mnogu/OneDrive/Ambiente de Trabalho/Uni/3 ano/1 Semestre/IA/Lab3&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/OneDrive/Ambiente de Trabalho/Uni/3 ano/1 semestre/IA/Lab3&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -62,6 +77,12 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\OneDrive\Ambiente de Trabalho\Uni\3 ano\1 semestre\IA\Lab3" />
+      <recent name="C:\Users\user\OneDrive\Ambiente de Trabalho\Uni\3 ano\1 semestre\IA\Lab3\src\Lab3" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -79,6 +100,10 @@
       <workItem from="1698764436337" duration="115000" />
       <workItem from="1698916456134" duration="3712000" />
       <workItem from="1699131298374" duration="4148000" />
+      <workItem from="1699189259110" duration="361000" />
+      <workItem from="1699192164549" duration="2448000" />
+      <workItem from="1699196158961" duration="860000" />
+      <workItem from="1699197096032" duration="253000" />
     </task>
     <task id="LOCAL-00001" summary="criação da heuristica">
       <created>1697627767981</created>
