@@ -1,8 +1,8 @@
-package Lab3;
+package Lab3.Lab3;
 
 
-import java.sql.SQLOutput;
-import java.util.*;
+import java.util.Iterator;
+import java.util.Scanner;
 
 import static Lab3.sequence.Log2;
 

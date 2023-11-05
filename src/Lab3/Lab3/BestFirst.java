@@ -1,6 +1,9 @@
-package Lab3;
+package Lab3.Lab3;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Stack;
 
 public class BestFirst {
 
