@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c94ecd95-9d4b-4972-a309-555b541bd5da" name="Changes" comment="Codigo final com estatisticas">
+    <list default="true" id="eeda2844-0290-4abe-a6be-a95a1acad00a" name="Changes" comment="Tentativa de meter o codigo a funcionar">
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_10_2023_09_20__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_10_2023_21_34_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_10_2023_21_34__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab3/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +25,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="KEEP" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -36,7 +35,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="01b94640-95ad-40ab-b3a1-d610e5229995" />
+        <option name="accountId" value="4a527e54-ba35-4df8-bb9c-90947427c9bb" />
         <option name="url" value="https://github.com/MarioNogueira01/Lab3.git" />
       </UrlAndAccount>
     </option>
@@ -52,28 +51,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "last_opened_file_path": "C:/Users/mnogu/OneDrive/Ambiente de Trabalho/Uni/3 ano/1 semestre/IA/LAb4",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mnogu/OneDrive/Ambiente de Trabalho/Uni/3 ano/1 Semestre/IA/Lab3&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c94ecd95-9d4b-4972-a309-555b541bd5da" name="Changes" comment="criação do algoritmo com erros" />
+      <changelist id="eeda2844-0290-4abe-a6be-a95a1acad00a" name="Changes" comment="Codigo Final(Podendo ser modificado a Heuristica)" />
       <created>1697625809314</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -86,10 +84,6 @@
       <workItem from="1698102739011" duration="349000" />
       <workItem from="1698764436337" duration="115000" />
       <workItem from="1698916456134" duration="3712000" />
-      <workItem from="1699131298374" duration="4148000" />
-      <workItem from="1703002496521" duration="1002000" />
-      <workItem from="1703067103811" duration="67000" />
-      <workItem from="1703166329468" duration="25000" />
     </task>
     <task id="LOCAL-00001" summary="criação da heuristica">
       <created>1697627767981</created>
@@ -133,35 +127,7 @@
       <option name="project" value="LOCAL" />
       <updated>1698764391437</updated>
     </task>
-    <task id="LOCAL-00007" summary="codigo final">
-      <created>1699135374143</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1699135374143</updated>
-    </task>
-    <task id="LOCAL-00008" summary="codigo final">
-      <created>1699135462464</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1699135462464</updated>
-    </task>
-    <task id="LOCAL-00009" summary="codigo final">
-      <created>1699135490988</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1699135490988</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Codigo final com estatisticas">
-      <created>1699203524420</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1699203524420</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,8 +150,36 @@
     <MESSAGE value="começo de criação do algoritmo" />
     <MESSAGE value="começo de criação do algoritmoII" />
     <MESSAGE value="Codigo Final(Podendo ser modificado a Heuristica)" />
-    <MESSAGE value="codigo final" />
-    <MESSAGE value="Codigo final com estatisticas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Codigo final com estatisticas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Codigo Final(Podendo ser modificado a Heuristica)" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Lab3/BestFirst.java</url>
+          <line>113</line>
+          <properties class="Lab3.BestFirst">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Lab3/BestFirst.java</url>
+          <line>119</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Lab3/BestFirst.java</url>
+          <line>126</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Lab3/BestFirst.java</url>
+          <line>127</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
