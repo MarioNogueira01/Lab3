@@ -27,12 +27,7 @@ public class Main {
                            System.out.println("\n" + i.getG());
 
                    }
-                   System.out.println("nos expandidos = " + s.exp);
-                   System.out.println("nos gerados = " + s.gera);
-                   System.out.println("nos fechados = " + s.fech);
-                   System.out.println("profundidade= " + s.prof);
-
-                   System.out.println("tempo de execucao : " + executionTimeSecs + " segundos e " + executionTimeMillis+" milisegundos");
+                   //meter aqui as analises
 
                }
            }catch (Exception e) {
